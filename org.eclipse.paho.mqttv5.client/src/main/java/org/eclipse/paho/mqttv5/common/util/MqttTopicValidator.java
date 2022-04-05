@@ -199,16 +199,14 @@ public class MqttTopicValidator {
 			 * https://github.com/eclipse/paho.mqtt.java/issues/418 Covers edge case to
 			 * match sport/# to sport
 			 */
-                       if ((topicFilter.length() - filterPos > 0) && (topicPos == topicLen)) {
-                               if (topicName.charAt(topicPos - 1) == '/' && topicFilter.charAt(filterPos) == '#')
-                                       return true;
-                               if (topicFilter.length() - filterPos > 1
-                                       && topicFilter.substring(filterPos, filterPos + 2).equals("/#")) {
-			               if ((topicFilter.length() - topicName.length()) == 2
-					        && topicFilter.substring(topicFilter.length() - 2, topicFilter.length()).equals("/#")) {
-					        return true;
-				        }
-                                }
+		  
+   if ((topicFilter.length() - filterPos > 0) && (topicPos == topicLen)) {
+     if (topicName.charAt(topicPos - 1) == '/' && topicFilter.charAt(filterPos) == '#')
+       return true;
+     if (topicFilter.length() - filterPos > 1
+         && topicFilter.substring(filterPos, filterPos + 2).equals("/#")) {
+					  return true;
+     }
 			}
 		}
 		return false;
